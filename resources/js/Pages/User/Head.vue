@@ -5,7 +5,7 @@
             <div class="container d-flex">
 
                 <div class="logo mr-auto">
-                    <h1 class="text-light"><a href="/Inicio"><img src="assets/img/Logo.jpeg" width="70px"/></a></h1>
+                    <h1 class="text-light"><a href="/Inicio"><img src="/assets/img/Logo.jpeg" width="70px"/></a></h1>
                     <!-- Uncomment below if you prefer to use an image logo -->
                     <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
                 </div>
@@ -50,13 +50,16 @@
                         <li><a href="/Carrito" style="color:black;"><i class="icofont-cart-alt"></i></a></li>
                         <li class="drop-down"><a href="#"><i class="icofont-ui-user"></i></a>
                             <ul>
-                                <li v-if="this.$store.state.auth==false"><a href="" style="color:black;" data-toggle="modal" data-target="#loginModal">Iniciar sesion</a></li>
-                                <li v-if="this.$store.state.auth==false"><a href="" style="color:black;" data-toggle="modal" data-target="#registrarModal">Registrarse</a></li>
+                                <li v-if="this.$store.state.auth==true"><a href="#" style="color:black;">{{this.$store.state.datosUsuario.name}}</a></li>
+                                <li v-if="this.$store.state.auth==false"><a href="#" style="color:black;" data-toggle="modal" data-target="#loginModal">Iniciar sesion</a></li>
+                                <li v-if="this.$store.state.auth==false"><a href="#" style="color:black;" data-toggle="modal" data-target="#registrarModal">Registrarse</a></li>
                                 <li v-if="this.$store.state.auth==true">
                                     <v-form @submit.prevent="cerrarSesion" ref="form">
                                         <button type="submit" style="backgroud-color:white; color:blue;"><i class="icofont-power"></i></button>
                                     </v-form>
+
                                 </li>
+
 
                             </ul>
                         <li><a href="#" style="color:blue;"><i class="icofont-facebook"></i></a></li>
