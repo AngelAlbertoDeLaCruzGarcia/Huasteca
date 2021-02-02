@@ -49,29 +49,55 @@ class UserComponent extends Component
     }
     public function storeU(){
         //$prod=$this->generarURL($data['product']);
+        $img=null;
         if($this->imgUsuario!=null)
-        $q=$this->imgUsuario->store('storage/profile-photos','subirArchivos');
-        $img = Str::of($q)->substr(8);
+        {
+             $q=$this->imgUsuario->store('storage/profile-photos','subirArchivos');
+             $img = Str::of($q)->substr(8);
+        }
+
         if($this->msg=='Guardar')
         {
             $this->validate([
-                'nombre'=>   'required',
-                'correo'=>      'required|unique:users,email',
-                'contra'=>   'required',
+                'nombre'=>   'required|string|min:10|max:200',
+                'correo'=>      'required|unique:users,email|email|min:10|max:150',
+                'contra'=>   'required|min:8|max:30',
+                'imgUsuario'=>   'max:5024',
             ],
             [
                 'nombre.required' => 'El nombre del usuario es requerido',
+                'nombre.min' => 'Minimo 10 caracteres',
+                'nombre.max' => 'Maximo 200 caracteres',
                 'correo.required' => 'El correo del usuario es requerido',
+                'correo.unique' => 'El correo ya existe',
+                'correo.email' => 'El correo no es valido',
+                'nombre.min' => 'Minimo 10 caracteres',
+                'nombre.max' => 'Maximo 150 caracteres',
                 'contra.required' => 'Contraseña es requerida',
+                'nombre.min' => 'Minimo 8 caracteres',
+                'nombre.max' => 'Maximo 200 caracteres',
+                'imgUsuario.max' => '5MB Maximo',
             ]);
-            User::Insert([
-                'name'=>      $this->nombre,
-                'email'=>      $this->correo,
-                'password'=>      Hash::make($this->contra),
-                'profile_photo_path'=> $img,
-                'created_at'=>      now(),
-                'updated_at'=>      now(),
-            ]);
+            if($img!=null){
+                 User::Insert([
+                    'name'=>      $this->nombre,
+                    'email'=>      $this->correo,
+                    'password'=>      Hash::make($this->contra),
+                    'profile_photo_path'=> $img,
+                    'created_at'=>      now(),
+                    'updated_at'=>      now(),
+                ]);
+            }
+            if($img==null){
+                User::Insert([
+                   'name'=>      $this->nombre,
+                   'email'=>      $this->correo,
+                   'password'=>      Hash::make($this->contra),
+                   'created_at'=>      now(),
+                   'updated_at'=>      now(),
+               ]);
+           }
+
             $user_id = User::where('email',$this->correo )->value('id');
             team_user::Insert([
                 'role'    =>     $this->rol,

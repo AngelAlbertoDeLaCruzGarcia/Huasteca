@@ -2,11 +2,11 @@
 <v-app>
         <Head :errors="errors"/>
         <!-- ======= Hero Section ======= -->
-         <section id="hero2">
+          <section id="hero2" style="padding: 45px 0;">
             <div class="hero-container" data-aos="fade-up">
-            <h2>Huasteca</h2>
+
             </div>
-        </section><!-- End Hero -->
+        </section>
 
 
 

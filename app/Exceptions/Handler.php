@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exceptions;
-
+use App\Exceptions\InvalidOrderException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -32,6 +32,8 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        //
+        $this->renderable(function (InvalidOrderException $e, $request) {
+            return response()->view('errors.invalid-order', [], 500);
+        });
     }
 }

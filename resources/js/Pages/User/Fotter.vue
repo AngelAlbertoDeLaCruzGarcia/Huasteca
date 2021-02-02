@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="footer-info" data-aos="fade-up" data-aos-delay="50">
                             <h3>Indumentarias</h3>
                             <p class="pb-3"><em>La mejor calidad en ropa de la Huasteca</em></p>
@@ -17,42 +17,79 @@
                                 <strong>Email:</strong> indumentariash@gmail.com<br>
                             </p>
                             <div class="social-links mt-3">
-                                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                                <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+                                <a href="#" class="google-plus"><i class="icofont-skype"></i></a>
+                                <a href="#" class="linkedin"><i class="icofont-telegram"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-2 col-md-6 footer-links" data-aos="fade-up" data-aos-delay="150">
-                        <h4>Useful Links</h4>
+                        <h4>Navegacion</h4>
                         <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/">Inicio</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/Acerca">Acerca de</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/Carrito">Carrito</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-2 col-md-6 footer-links" data-aos="fade-up" data-aos-delay="250">
-                        <h4>Our Services</h4>
+                        <h4>Categorias</h4>
                         <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=2`">Dama</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=1`">Caballero</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=3`">Niño</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Camisa`">Camisas</a></li>
+                            <v-list dark>
+                                <v-list-group :value="false">
+                                    <template v-slot:activator>
+                                        <v-list-item-title>Mas...</v-list-item-title>
+                                    </template>
+                                    <v-list-item>
+                                        <v-list-item-title>
+                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Conjunto`">Conjuntos</a></li>
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-title>
+                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Blusa`">Blusas</a></li>
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-title>
+                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Cubreboca`">Cubrebocas</a></li>
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-title>
+                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Traje`">Trajes</a></li>
+                                        </v-list-item-title>
+                                    </v-list-item>
+
+                                    <v-list-item>
+                                        <v-list-item-title>
+                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Huarache`">Huaraches</a></li>
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-title>
+                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Tenis`">Tenis</a></li>
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </v-list-group>
+                            </v-list>
                         </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter" data-aos="fade-up" data-aos-delay="350">
-                        <h4>Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                        <form style="color:black" action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Subscribe">
+                        <h4>Suscribete</h4>
+                        <p>Para que puedas recibir ofertas, descuentos, sorpresas y mucho mas</p>
+                        <form style="color:black" action="">
+                        <input type="email" placeholder="correo@ejemplo.com" name="email"><input type="submit" value="Subscribe">
                         </form>
 
                     </div>
@@ -77,7 +114,6 @@
 </template>
 
 <script>
-
     export default {
 
     }

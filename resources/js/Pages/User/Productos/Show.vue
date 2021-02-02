@@ -1,15 +1,25 @@
 <template>
     <v-app>
         <Head :errors="errors"/>
-        <section id="hero2">
+        <!-- ======= Hero Section ======= -->
+          <section id="hero2" style="padding: 45px 0;">
             <div class="hero-container" data-aos="fade-up">
-            <h2>Huasteca</h2>
+
             </div>
-        </section><!-- End Hero -->
-       <main id="main">
+        </section>
+
+
+
+        <main id="main">
             <section id="portfolio" class="portfolio">
                 <div class="container">
-
+                    <div style="margin-bottom:20px;">
+                        <a href="/">Inicio</a> <v-icon>mdi-forward</v-icon>
+                        <a :href="`/bprod?p=${datops.intIdCat}`">{{categ}}</a>
+                        <v-icon>mdi-forward</v-icon>
+                        <a :href="`/bprod?p=${tipo}`">{{tipo}}</a> <v-icon>mdi-forward</v-icon>
+                        {{datops.vchProd}}
+                    </div>
                 <div class="row portfolio-container" data-aos="fade-up">
                 <div class="flex-direction: row" hover="true">
                     <v-card
@@ -26,8 +36,8 @@
 
                             <div>{{datops.vchDesc}}</div>
 
-                            <div>{{datops.vchTalla}}</div>
-
+                            <div>{{datops.vchTalla}}  {{datops.vchImg}}</div>
+                            {{datops.intIdCat}}
                         </v-card-text>
 
                         <v-card-actions>
@@ -52,19 +62,21 @@ export default {
     },
   data() {
         return{
-        carritoProds: [
-            {
-
-                nombre:'Angel',
-                precio: 0,
-            }
-        ],
-        newproductoCarrito: null,
-        newproductoCarrito2: null,
-        id2: 0,
+            carritoProds: [
+                {
+                    nombre:'Angel',
+                    precio: 0,
+                }
+            ],
+            newproductoCarrito: null,
+            newproductoCarrito2: null,
+            id2: 0,
+            ///tipo: this.datops.vchProd.substr(0,6),
+            message: 'Hello',
         }
     },
     mounted() {
+
     if (localStorage.getItem('carritoProds')) {
       try {
         this.carritoProds = JSON.parse(localStorage.getItem('carritoProds'));
@@ -72,6 +84,25 @@ export default {
         localStorage.removeItem('carritoProds');
       }
     }
+  },
+  computed:{
+    categ:function (){
+        if(this.datops.intIdCat==1)
+           return "Caballero"
+        if(this.datops.intIdCat==2)
+           return "Dama"
+        if(this.datops.intIdCat==3)
+           return "Infantil"
+    },
+    tipo:function(){
+        var t=this.datops.vchProd.split(' ');
+        return t[0];
+    },
+    reversedMessage: function () {
+      // `this` points to the vm instance
+      return this.message.split('').reverse().join('')
+    }
+
   },
   methods: {
     addProd() {

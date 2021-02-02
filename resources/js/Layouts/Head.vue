@@ -6,7 +6,8 @@
             <div class="container d-flex">
 
             <div class="logo mr-auto">
-                <h1 class="text-light"><a href="/Inicio"><img src="assets/img/logo.png"/></a></h1>
+                    <h1 class="text-light"><a href="/Inicio"><img src="assets/img/Logo.jpeg" width="90px"/></a></h1>
+
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>

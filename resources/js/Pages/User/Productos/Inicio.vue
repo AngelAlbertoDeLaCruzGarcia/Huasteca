@@ -1,40 +1,47 @@
 <template>
     <v-app>
+
         <Head :errors="errors"/>
+
         <!-- ======= Hero Section ======= -->
-        <section id="hero">
+        <section id="hero2" style="padding: 45px 0;">
             <div class="hero-container" data-aos="fade-up">
-                <h1>Indumentarias de la Huasteca</h1>
-                <h2>la huasteca solo hay una, y como la huasteca ninguna</h2>
-                <a href="#portfolio" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+
             </div>
-        </section><!-- End Hero
-          <v-img src="@/assets/ic.png"></v-img> -->
+        </section>
         <main id="main">
+
+            <!-- =======Slider ======= -->
+            <section id="about" class="about" style="padding: -30px 0;">
+                <div class="container">
+                    <v-card elevation="24" max-width="100%" class="mx-auto">
+                        <v-carousel cycle height="370" hide-delimiter-background show-arrows-on-hover>
+                            <v-carousel-item v-for="(item,i) in items" :key="i" :src="`${item.src}`"></v-carousel-item>
+                        </v-carousel>
+                    </v-card>
+                </div>
+            </section><!-- Slider -->
+
             <!-- ======= Portfolio Section ======= -->
             <section id="portfolio" class="portfolio">
                 <div class="container">
-                    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-                        <h2>Productos</h2>
-                        <p>La mejor calidad de la region huasteca de Mexico</p>
-                        <button v-on:click="checar">checar</button>
-                        Completed Todos: {{ doneTodosCount }}
-                    </div>
+
 
                     <div class="row" data-aos="fade-in">
                         <div class="col-lg-12 d-flex justify-content-center">
                             <ul id="portfolio-flters">
-                                <li data-filter="*" class="filter-active">All</li>
-                                <li data-filter=".filter-c">Caballero</li>
-                                <li data-filter=".filter-d">Dama</li>
-                                <li data-filter=".filter-n">Niño</li>
+                                <li><v-btn @click="cambiarT" color="success" x-small rounded>Todo</v-btn></li>
+                                <li><v-btn @click="cambiarD" color="success" x-small rounded>Dama</v-btn></li>
+                                <li><v-btn @click="cambiarC" color="success" x-small rounded>Caballero</v-btn></li>
+                                <li><v-btn @click="cambiarI" color="success" x-small rounded>Infantil</v-btn></li>
+
                             </ul>
                         </div>
                     </div>
 
                     <div class="row portfolio-container" data-aos="fade-up">
                         <div v-for="prod in prods" :key="prod.intIDProd">
-                            <ul v-if="prod.intIdCat==1">
+                            <ul v-if="prod.intIdCat==1" v-show="caba">
                                 <div class="portfolio-item filter-c">
                                     <inertia-link :href="`/Inicio/${prod.intIDProd}`">
 
@@ -66,18 +73,18 @@
 
                                 </div>
                             </ul>
-                            <ul v-if="prod.intIdCat==2">
+                            <ul v-if="prod.intIdCat==2" v-show="dama">
                                 <div class="portfolio-item filter-d">
                                     <inertia-link :href="`/Inicio/${prod.intIDProd}`">
 
                                        <v-card class="mx-auto" max-width="350" hover="true">
                                         <v-img class="white--text align-end" height="200px"
-                                        src="`${prod.vchImg}`">
+                                        :src="`${prod.vchImg}`">
                                         </v-img>
                                         <v-card-title>{{prod.vchProd}}</v-card-title>
 
                                         <v-card-subtitle class="pb-0">
-                                        Para Dama
+                                        Dama
                                         </v-card-subtitle>
 
                                         <v-card-text class="text--primary">
@@ -96,7 +103,7 @@
 
                                 </div>
                             </ul>
-                            <ul v-if="prod.intIdCat==3">
+                            <ul v-if="prod.intIdCat==3" v-show="infa">
                                 <div class="portfolio-item filter-n" hover="true">
                                     <inertia-link :href="`/Inicio/${prod.intIDProd}`">
 
@@ -107,7 +114,7 @@
                                         <v-card-title>{{prod.vchProd}}</v-card-title>
 
                                         <v-card-subtitle class="pb-0">
-                                        Niño
+                                        Infantil
                                         </v-card-subtitle>
 
                                         <v-card-text class="text--primary">
@@ -149,18 +156,55 @@ export default {
     props:{
         prods:Array,
         errors: Object,
-
     },
     data () {
       return {
-        r:'https://cdn.vuetifyjs.com/images/cards/docks.jpg',
         i:'Nuevo',
+        caba: true,
+        dama: true,
+        infa: true,
         cont: this.$store.state.count,
+        items:
+        [
+            {
+            src: 'assets/img/imgSlider1.jpg',
+            },
+            {
+            src: 'assets/img/imgSlider2.jpg',
+            },
+            {
+            src: 'assets/img/imgSlider3.jpg',
+            },
+        ],
       }
     },
     methods: {
         checar() {
           alert(this.cont)
+        },
+        cambiarD:function()
+        {
+            this.dama=true;
+            this.caba=false;
+            this.infa=false;
+        },
+        cambiarC:function()
+        {
+            this.dama=false;
+            this.caba=true;
+            this.infa=false;
+        },
+        cambiarI:function()
+        {
+            this.dama=false;
+            this.caba=false;
+            this.infa=true;
+        },
+        cambiarT:function()
+        {
+            this.dama=true;
+            this.caba=true;
+            this.infa=true;
         },
     },
     computed: mapGetters([

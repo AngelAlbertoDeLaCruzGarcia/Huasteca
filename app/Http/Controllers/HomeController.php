@@ -18,12 +18,7 @@ class HomeController extends Controller
             if ($role=='admin')
                 return view('dashboard');
             else{
-
-               return Inertia::render('@/Layouts/Head', [
-                 'datos' => $datos
-                    ///'create_url' => URL::route('users.create'),
-                ]);
-                return Redirect::route('Inicio.index')->with('success', 'Organization created.');
+                return Redirect::route('Inicio.index');
 
             }
 

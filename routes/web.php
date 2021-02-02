@@ -50,6 +50,7 @@ Route::get('/',
 });
 Route::resource('Inicio', 'App\Http\Controllers\ProductController');
 Route::get('bprod', 'App\Http\Controllers\ProductController@buscarProd');
+Route::post('bproda', 'App\Http\Controllers\ProductController@buscarProdA');
 
 Route::get('/Aviso', function () {
     return Inertia::render('User/Aviso');
@@ -69,6 +70,6 @@ Route::get('/Carrito', function () {
 //Route::post('login', 'App\Http\Controllers\ProductController');
 Route::get('datos', function () {
 
-    return $user = Auth::user();
+    return Auth::user();
 
 })->name('datos');
