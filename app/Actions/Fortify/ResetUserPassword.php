@@ -5,6 +5,7 @@ namespace App\Actions\Fortify;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\ResetsUserPasswords;
+use Illuminate\Support\Facades\Log;
 
 class ResetUserPassword implements ResetsUserPasswords
 {
@@ -19,6 +20,8 @@ class ResetUserPassword implements ResetsUserPasswords
      */
     public function reset($user, array $input)
     {
+        Log::channel('daily')->info('Reicio de contraseña, '.$user);
+
         Validator::make($input, [
             'password' => $this->passwordRules(),
         ])->validate();

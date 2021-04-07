@@ -31,9 +31,10 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@inertiajs/progress": "^0.2.2",
+        "@inertiajs/progress": "^0.2.4",
         "laravel-jetstream": "^1.2.0",
         "vue": "^2.6.12",
+        "vue-flash-message": "^0.7.2",
         "vue-validate": "^1.0.1",
         "vuetify": "^2.3.18",
         "vuex": "^3.6.0"

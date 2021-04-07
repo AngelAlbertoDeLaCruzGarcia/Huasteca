@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\tblproductos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 use Inertia\Inertia;
 use Illuminate\Support\Facades\URL;
 use phpDocumentor\Reflection\Types\Boolean;
@@ -24,18 +26,19 @@ class ProductController extends Controller
         ]);
     }
     public function buscarProd(Request $request){
+        Log::channel('daily')->info('Busqueda de producto: '.$request);
         $checar=true;
         $pa=tblproductos::where('vchProd','LIKE','%'.$request->p.'%')
         ->orWhere('vchDesc','LIKE','%'.$request->p.'%')
         ->orWhere('intIdCat','LIKE','%'.$request->p.'%')
         ->get();
-
         return Inertia::render('User/Productos/Buscar',[
             'prods' => $pa,
             'nombre'=>$request->p,
         ]);
     }
     public function buscarProdA(Request $request){
+        Log::channel('daily')->info('Busqueda de producto avanzada: '.$request);
         $pa=tblproductos::where('vchProd','LIKE','%'.$request->product.'%')
         ->where('vchTalla','LIKE','%'.$request->talla.'%')
         ->where([
