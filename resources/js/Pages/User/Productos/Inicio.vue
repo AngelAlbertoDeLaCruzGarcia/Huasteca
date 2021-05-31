@@ -91,22 +91,6 @@
                                     </v-card>
                                 </inertia-link>
                             </ul>
-                            <ul v-if="prod.intIdCat==4" v-show="caba || dama">
-                                <inertia-link :href="`/Inicio/${prod.intIDProd}`">
-                                    <v-card class="mx-auto" max-width="350" hover="true">
-                                        <v-img class="white--text align-end" height="200px" :src="`${prod.vchImg}`"/>
-                                        <v-card-title>{{prod.vchProd}}</v-card-title>
-                                        <v-card-subtitle class="pb-0">Infantil </v-card-subtitle>
-                                        <v-card-text class="text--primary">
-                                            <div><strong>${{prod.fltPrecio}}</strong></div>
-                                            <div>{{prod.vchDesc}}</div>
-                                        </v-card-text>
-                                        <v-card-actions>
-                                            <v-btn color="success">Comprar</v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-                                </inertia-link>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -136,10 +120,15 @@ export default {
         cont: this.$store.state.count,
         items:
         [
-            { src: 'assets/img/imgSlider1.jpg', },
-            { src: 'assets/img/imgSlider2.jpg', },
-            { src: 'assets/img/imgSlider3.jpg', },
-            { src: 'assets/img/imgSlider4.png', },
+            {
+            src: 'assets/img/imgSlider1.jpg',
+            },
+            {
+            src: 'assets/img/imgSlider2.jpg',
+            },
+            {
+            src: 'assets/img/imgSlider3.jpg',
+            },
         ],
       }
     },

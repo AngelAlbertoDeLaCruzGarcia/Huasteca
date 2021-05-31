@@ -59,11 +59,7 @@
             <td>
                 <div class="form-row">
                     <div class="col-md-auto">
-                @if($user->profile_photo_path!=null)
-                    <img src="{{$user->profile_photo_path }}" width="50px" height="50px" alt="Responsive image" class="img-thumbnail img-fluid"/>
-                @elseif ($user->profile_photo_path==null)
-                    <img src="{{$user->profile_photo_url}}" width="50px" height="50px" alt="Responsive image" class="img-thumbnail img-fluid"/>
-                @endif
+                <img src="{{$user->profile_photo_url }} " width="50px" height="50px" alt="Responsive image" class="img-thumbnail img-fluid"/>
                 </div><div class="col-md-auto">
                 {{ $user->name }}</div>
                 </div>
