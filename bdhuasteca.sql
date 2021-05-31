@@ -16,7 +16,7 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`dbhuasteca` /*!40100 DEFAULT CHARACTER 
 
 USE `dbhuasteca`;
 
-/*Table structure for table `chat_messages` */
+
 
 DROP TABLE IF EXISTS `chat_messages`;
 
