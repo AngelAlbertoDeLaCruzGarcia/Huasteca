@@ -40,7 +40,6 @@ export default {
     ///props:['prods'],
     props:{
         errors: Object,
-        flash: Object,
 
     },
     data () {

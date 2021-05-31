@@ -58,7 +58,4 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    public function tipo(){
-        return $this->belongsTo(team_user::class,'user_id','id');
-    }
 }

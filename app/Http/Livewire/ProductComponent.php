@@ -3,12 +3,9 @@
 namespace App\Http\Livewire;
 use App\Models\tblproductos;
 use App\Models\tblcats;
-use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Log;
-use Stevebauman\Purify\Facades\Purify;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,9 +23,6 @@ class ProductComponent extends Component
     public $modalFormVisible=false; public $modalEliminar=false;
     public function render()
     {
-        if($this->searchProd!=null){
-            Log::channel('daily')->info('Busque de producto: '.$this->searchProd.', Parte administrativa,'.', Usuario: '.Auth::id());
-        }
         //$searchTerm = '%'.$this->search.'%';
         return view('livewire.Admin.prod.product-component',[
             'prods'=> tblproductos::where('vchProd','LIKE',"%{$this->searchProd}%")
@@ -51,21 +45,18 @@ class ProductComponent extends Component
         $this->msg='Guardar ';
     }
     public function store(){
-
         $this->validate([
-            'product'=>   'required|max:100',
+            'product'=>   'required',
             ///'product'=>   ['required',Rule::unique('tblproductos','vchProd')],
-            'desc'=>      'required|max:500',
+            'desc'=>      'required',
             'cant'=>      'required|integer|min:1|max:20000',
             'precio'=>    'required|numeric|min:1|max:20000',
-            'talla'=>     'required|max:20',
+            'talla'=>     'required',
             'imgProd'=>   'required|image|max:5024',
         ],
         [
             'product.required' => 'El nombre del producto es requerido',
-            'product.max' => 'Maximo 100 caracteres',
             'desc.required' => 'La descripcion del producto es requerida',
-            'desc.max' => 'Maximo 500 caracteres',
             'cant.required' => 'La cantidad es requerida',
             'cant.integer' => 'Introduce un numero entero',
             'cant.min' => 'Debe ser mayor o igual a 1',
@@ -75,7 +66,6 @@ class ProductComponent extends Component
             'cant.max' => 'Precio maximo: $20000',
             'precio.numeric' => 'Introduce una cantidad',
             'talla.required' => 'La talla es requerida',
-            'talla.max' => 'Maximo 20 caracteres',
             'imgProd.required' => 'La imagen es requerida',
             'imgProd.image' => 'Solo imagenes',
             'imgProd.max' => '5MB Maximo',
@@ -93,8 +83,6 @@ class ProductComponent extends Component
         $this-> cleanVars();
         $this->cerrarModal();
         session()->flash('message', 'Producto modificado correctamente.');
-        Log::channel('daily')->info('Producto '.$this->idupd.'Estado: '.$this->msg.', Usuario: '.Auth::id());
-
     }
     public function cerrarModal()
     {
@@ -133,10 +121,8 @@ class ProductComponent extends Component
         $this->idp=$id;
         $prod = tblproductos::where('intIDProd', $id)->first();
         $this->product= $prod->vchProd;
-
     }
     public function eliminarProd(){
-        Log::channel('daily')->info('Producto '.$this->idupd.'Estado: Eliminado'.', Usuario: '.Auth::id());
         $prod=tblproductos::where('intIDProd',$this->idp);
         $prod->delete();
         $this->modalEliminar=false;
