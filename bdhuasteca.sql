@@ -38,7 +38,7 @@ insert  into `chat_messages`(`id`,`chat_room_id`,`user_id`,`message`,`created_at
 
 UNLOCK TABLES;
 
-/*Table structure for table `chat_rooms` */
+
 
 DROP TABLE IF EXISTS `chat_rooms`;
 
