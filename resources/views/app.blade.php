@@ -20,8 +20,6 @@
         <!-- Vendor JS Files -->
         <script src="assets/vendor/jquery/jquery.min.js" defer></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
-        <script src="assets/vendor/jquery.easing/jquery.easing.min.js" defer></script>
-        <script src="assets/vendor/waypoints/jquery.waypoints.min.js" defer></script>
 
 
         <!-- Template Main JS File -->

@@ -7,9 +7,9 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\team_user;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Str;
 class UserComponent extends Component
 {
@@ -26,6 +26,9 @@ class UserComponent extends Component
     public $modalUserVisible=false; public $modalUserEliminar=false;
     public function render()
     {
+        if($this->searchUsuario!=null){
+            Log::channel('daily')->info('Busqueda de usuario: '.$this->searchUsuario.', Parte administrativa,'.', Usuario: '.Auth::id());
+        }
         //$searchTerm = '%'.$this->search.'%';
         return view('livewire.Admin.Usuario.user-component',[
             'users'=> User::where('name','LIKE',"%{$this->searchUsuario}%")
@@ -59,8 +62,8 @@ class UserComponent extends Component
         if($this->msg=='Guardar')
         {
             $this->validate([
-                'nombre'=>   'required|string|min:10|max:200',
-                'correo'=>      'required|unique:users,email|email|min:10|max:150',
+                'nombre'=>   'required|string|min:10|max:250',
+                'correo'=>      'required|unique:users,email|email|min:10|max:60',
                 'contra'=>   'required|min:8|max:30',
                 'imgUsuario'=>   'max:5024',
             ],
@@ -72,10 +75,10 @@ class UserComponent extends Component
                 'correo.unique' => 'El correo ya existe',
                 'correo.email' => 'El correo no es valido',
                 'nombre.min' => 'Minimo 10 caracteres',
-                'nombre.max' => 'Maximo 150 caracteres',
+                'nombre.max' => 'Maximo 60 caracteres',
                 'contra.required' => 'Contraseña es requerida',
                 'nombre.min' => 'Minimo 8 caracteres',
-                'nombre.max' => 'Maximo 200 caracteres',
+                'nombre.max' => 'Maximo 250 caracteres',
                 'imgUsuario.max' => '5MB Maximo',
             ]);
             if($img!=null){
@@ -83,7 +86,7 @@ class UserComponent extends Component
                     'name'=>      $this->nombre,
                     'email'=>      $this->correo,
                     'password'=>      Hash::make($this->contra),
-                    'profile_photo_path'=> $img,
+                    'profile_photo_path'=> 'storage/'.$img,
                     'created_at'=>      now(),
                     'updated_at'=>      now(),
                 ]);
@@ -105,6 +108,8 @@ class UserComponent extends Component
                 'team_id' =>     1
             ]);
             session()->flash('message', 'Usuario guardado correctamente.');
+            Log::channel('daily')->info('Usuario agregado: '.$this->correo.', id: '.$user_id);
+
         }else if($this->msg=='Actualizar'){
             $this->validate([
                 'nombre'=>   'required',
@@ -166,6 +171,9 @@ class UserComponent extends Component
                 }
             }
             session()->flash('message', 'Usuario modificado correctamente.');
+            Log::channel('daily')->info('Usuario actualizado: '.$this->correo.', id: '.$this->idUsuario);
+
+
         }
         $this-> cleanVars();
         $this->cerrarUserModal();
@@ -213,6 +221,7 @@ class UserComponent extends Component
         $this->nombre= $usuario->name;
     }
     public function eliminarUser(){
+        Log::channel('daily')->warning('Usuario eliminado, id: '.$this->idu);
         $usuario=User::where('id',$this->idu);
         ///Storage::delete($usuario->profile_photo_path);
         $usuario->delete();

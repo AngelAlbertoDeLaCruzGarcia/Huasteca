@@ -2,7 +2,7 @@
 <div>
     <!-- ======= Footer ======= -->
     <footer id="footer">
-        <div class="footer-top">
+        <div class="footer-top" style="padding: 23px 0 0px 0;">
             <div class="container">
                 <div class="row">
 
@@ -29,21 +29,21 @@
                     <div class="col-lg-2 col-md-6 footer-links" data-aos="fade-up" data-aos-delay="150">
                         <h4>Navegacion</h4>
                         <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="/">Inicio</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="/Acerca">Acerca de</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="/Carrito">Carrito</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        <li><a href="/">>&nbsp;Inicio</a></li>
+                        <li><a href="/Acerca">>&nbsp;Acerca de</a></li>
+                        <li><a href="/Carrito">>&nbsp;Carrito</a></li>
+                        <li><a href="#">>&nbsp;Terms of service</a></li>
+                        <li><a href="#">>&nbsp;Privacy policy</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-2 col-md-6 footer-links" data-aos="fade-up" data-aos-delay="250">
                         <h4>Categorias</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=2`">Dama</a></li>
-                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=1`">Caballero</a></li>
-                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=3`">Niño</a></li>
-                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Camisa`">Camisas</a></li>
+                            <li><a :href="`/bprod?p=2`">>&nbsp;Dama</a></li>
+                            <li><a :href="`/bprod?p=1`">>&nbsp;Caballero</a></li>
+                            <li><a :href="`/bprod?p=3`">>&nbsp;Niño</a></li>
+                            <li><a :href="`/bprod?p=Camisa`">>&nbsp;Camisas</a></li>
                             <v-list dark>
                                 <v-list-group :value="false">
                                     <template v-slot:activator>
@@ -51,33 +51,33 @@
                                     </template>
                                     <v-list-item>
                                         <v-list-item-title>
-                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Conjunto`">Conjuntos</a></li>
+                                        <li><a :href="`/bprod?p=Conjunto`">>&nbsp;Conjuntos</a></li>
                                         </v-list-item-title>
                                     </v-list-item>
                                     <v-list-item>
                                         <v-list-item-title>
-                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Blusa`">Blusas</a></li>
+                                            <li><a :href="`/bprod?p=Blusa`">>&nbsp;Blusas</a></li>
                                         </v-list-item-title>
                                     </v-list-item>
                                     <v-list-item>
                                         <v-list-item-title>
-                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Cubreboca`">Cubrebocas</a></li>
+                                            <li><a :href="`/bprod?p=Cubreboca`">>&nbsp;Cubrebocas</a></li>
                                         </v-list-item-title>
                                     </v-list-item>
                                     <v-list-item>
                                         <v-list-item-title>
-                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Traje`">Trajes</a></li>
+                                            <li><a :href="`/bprod?p=Traje`">>&nbsp;Trajes</a></li>
                                         </v-list-item-title>
                                     </v-list-item>
 
                                     <v-list-item>
                                         <v-list-item-title>
-                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Huarache`">Huaraches</a></li>
+                                            <li><a :href="`/bprod?p=Huarache`">>&nbsp;Huaraches</a></li>
                                         </v-list-item-title>
                                     </v-list-item>
                                     <v-list-item>
                                         <v-list-item-title>
-                                            <li><i class="bx bx-chevron-right"></i><a :href="`/bprod?p=Tenis`">Tenis</a></li>
+                                            <li><a :href="`/bprod?p=Tenis`">>&nbsp;Tenis</a></li>
                                         </v-list-item-title>
                                     </v-list-item>
                                 </v-list-group>
@@ -108,8 +108,9 @@
 
             </div>
         </div>
+
     </footer>
-    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
 </div>
 </template>
 
