@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body style="text-align: center; background-color:#17a2b8;color: white;">
+<body style="text-align: center; background-color:#c4edf3;">
 
     <img
         height="200"
