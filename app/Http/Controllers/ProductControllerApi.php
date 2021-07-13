@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\tblproductos;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4d474611f858e37b8ec8b110587c08135cfe2c44
 use App\Models\ChatMessage;
 
 class ProductControllerApi extends Controller
@@ -26,6 +29,7 @@ class ProductControllerApi extends Controller
             ->get();
         return $pa;
     }
+<<<<<<< HEAD
     public function update(Request $request)
     {
         try {
@@ -41,4 +45,6 @@ class ProductControllerApi extends Controller
     {
         return ChatMessage::all();
     }
+=======
+>>>>>>> 4d474611f858e37b8ec8b110587c08135cfe2c44
 }

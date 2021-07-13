@@ -124,8 +124,15 @@ Route::get('/pemail',function () {
 
 });*/
 
+<<<<<<< HEAD
 /*
 Route::get('/products', 'App\Http\Controllers\ProductControllerApi@index');
 Route::get('/products/{idprod}', 'App\Http\Controllers\ProductControllerApi@show');
 Route::get('/product', 'App\Http\Controllers\ProductControllerApi@buscarProd');
 */
+=======
+
+Route::get('/products', 'App\Http\Controllers\ProductControllerApi@index');
+Route::get('/products/{idprod}', 'App\Http\Controllers\ProductControllerApi@show');
+Route::get('/product', 'App\Http\Controllers\ProductControllerApi@buscarProd');
+>>>>>>> 4d474611f858e37b8ec8b110587c08135cfe2c44
