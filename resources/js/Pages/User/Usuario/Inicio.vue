@@ -12,9 +12,6 @@
         <main id="main">
             <section id="contact" class="contact section-bg">
                 <div class="container">
-
-
-
                     <div class="d-flex justify-content-center">
                         <v-card style="padding:30px;" max-width="800" hover="true">
                             <v-card-title>{{this.$store.state.datosUsuario.name}}</v-card-title>

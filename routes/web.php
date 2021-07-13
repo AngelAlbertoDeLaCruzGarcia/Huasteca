@@ -3,15 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Models\team_user;
+use App\Models\Team;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
 use App\Mail\verifyCorreoMail;
+use App\Models\tblproductos;
 use Illuminate\Support\Facades\Mail;
 use Stevebauman\Purify\Facades\Purify;
 
-
+////Purify
 Route::get('/aaa', function () {
     $array = [
         '<script>alert("Harmful Script");</script> <p style="a style" class="a-different-class">Test</p>',
@@ -19,43 +21,44 @@ Route::get('/aaa', function () {
     ];
 
     $cleaned = Purify::clean($array);
-echo $cleaned[1];
+    echo $cleaned[1];
     ///return view('mail.recoveryPass');
 });
 
 
 ////Administrador
-Route::get('/redirects',[HomeController::class,'index']);
+Route::get('/redirects', [HomeController::class, 'index']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/prod', function () {
     $role = team_user::select('role')->where('user_id', Auth::id())->value('role');
-    if ($role=='admin')
+    if ($role == 'admin')
         return view('livewire/Admin/prod/productos');
-     else
+    else
         return Redirect::route('Inicio.index');
 })->name('prod');
 Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios', function () {
     $role = team_user::select('role')->where('user_id', Auth::id())->value('role');
-    if ($role=='admin')
+    if ($role == 'admin')
         return view('livewire/Admin/Usuario/usuarios');
-     else
-         return Redirect::route('Inicio.index');
-
+    else
+        return Redirect::route('Inicio.index');
 })->name('usuarios');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $role = team_user::select('role')->where('user_id', Auth::id())->value('role');
-    if ($role=='admin')
+    if ($role == 'admin')
         return view('dashboard');
     else
-       return Redirect::route('Inicio.index');
+        return Redirect::route('Inicio.index');
 })->name('dashboard');
 
 
 /////Usuarios
-Route::get('/',
-    function(){
+Route::get(
+    '/',
+    function () {
         return Redirect::route('Inicio.index');
-});
+    }
+);
 Route::resource('Inicio', 'App\Http\Controllers\ProductController');
 Route::get('bprod', 'App\Http\Controllers\ProductController@buscarProd');
 Route::post('bproda', 'App\Http\Controllers\ProductController@buscarProdA');
@@ -63,6 +66,7 @@ Route::post('bproda', 'App\Http\Controllers\ProductController@buscarProdA');
 Route::get('/Aviso', function () {
     return Inertia::render('User/Aviso');
 });
+
 Route::get('/Acerca', function () {
     return Inertia::render('User/Acerca');
 });
@@ -76,7 +80,7 @@ Route::get('/Ayuda', function () {
 
 Route::resource('/perfilc', 'App\Http\Controllers\PerfilcController');
 
-
+///Recovery and login
 Route::resource('/contacto', 'App\Http\Controllers\ContactoController');
 Route::resource('/recoverPass', 'App\Http\Controllers\recoverPassController');
 Route::post('/bcorreo', 'App\Http\Controllers\bcorreoController@store');
@@ -111,6 +115,7 @@ Route::get('test', function () {
     Log::error('probando');
 });
 Route::resource('/pruebac', 'App\Http\Controllers\pruebaController');
+
 /*
 Route::get('/pemail',function () {
     $r='20170990@uthh.edu.mx';
@@ -118,3 +123,9 @@ Route::get('/pemail',function () {
     Mail::to($r)->send($correo);
 
 });*/
+
+/*
+Route::get('/products', 'App\Http\Controllers\ProductControllerApi@index');
+Route::get('/products/{idprod}', 'App\Http\Controllers\ProductControllerApi@show');
+Route::get('/product', 'App\Http\Controllers\ProductControllerApi@buscarProd');
+*/

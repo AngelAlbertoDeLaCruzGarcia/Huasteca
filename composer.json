@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
         "stevebauman/purify": "^4.0",
+        "stripe/stripe-php": "^7.88",
         "tightenco/ziggy": "^0.9.4",
         "twilio/sdk": "^6.20",
         "vonage/client": "^2.4",

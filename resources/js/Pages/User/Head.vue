@@ -85,11 +85,13 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <v-alert v-if="errors.email"  border="right" type="warning" elevation="5" width="400px">
-                            Correo y/o Contraseña incorrectos
+                                  <div>
+         <v-btn small fab color="#5C6BC0" dark
+          @click="errors.email = null">x</v-btn>
+         Libro Eliminado
+      </div>
                         </v-alert>
-                        <flash-message class="myCustomClass">
 
-                        </flash-message>
                     </div>
 
                     <v-form @submit.prevent="loguear" ref="form" v-model="frmloguear.valid"  lazy-validation>
@@ -284,7 +286,6 @@
                             Correo ya existe
                         </v-alert>
                     </div>
-
                     <v-form @submit.prevent="buscarCorreo" ref="form" v-model="frmregistrar.valid" lazy-validation>
                         <div class="modal-body">
                             <div class="form-group">
@@ -335,6 +336,11 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
+                    </div>
+                    <div v-if="frmverificar.code" class="d-flex justify-content-center">
+                        <v-alert border="right" type="warning" elevation="5" width="400px">
+                            Codigo Incorrecto
+                        </v-alert>
                     </div>
                     <div class="d-flex justify-content-center">
                         <v-alert v-if="cadena==null"  border="right" type="warning" elevation="5" width="400px">
@@ -497,7 +503,8 @@ export default{
             frmverificar:
             {
                 valid: true,
-                codigo: String,
+                code:false,
+                codigo: '',
                 codigoRules: [
                     v => !!v || 'Codigo es requerido',
                 ],
@@ -603,9 +610,7 @@ export default{
 
             }else
             {
-                this.flash('Codigo Incorrecto', 'error', {
-                    timeout: 50000,
-                });
+                this.frmverificar.code=true;
             }
         },
         chambiarReg()
